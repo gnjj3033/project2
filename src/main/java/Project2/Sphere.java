@@ -1,23 +1,25 @@
 package Project2;
 
-public class Sphere extends ThreeDimensionalShape{
+public class Sphere extends ThreeDimensionalShape {
     private double radius;
 
-    // Constructor
     public Sphere(double radius) {
         this.radius = radius;
-        calculateVolume();
-        calculateSurfaceArea();
-    }
-
-    // Implementation of abstract methods
-    @Override
-    void calculateVolume() {
-        volume = (4.0 / 3.0) * Math.PI * Math.pow(radius, 3);
     }
 
     @Override
-    void calculateSurfaceArea() {
-        surfaceArea = 4.0 * Math.PI * Math.pow(radius, 2);
+    public double surfaceArea() {
+        return 4 * Math.PI * radius * radius;
+    }
+
+    @Override
+    public double volume() {
+        return (4.0 / 3.0) * Math.PI * Math.pow(radius, 3);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Sphere {radius=%.2f, surface area=%.2f, volume=%.2f}", radius, surfaceArea(), volume());
+
     }
 }

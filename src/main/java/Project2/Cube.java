@@ -1,23 +1,26 @@
 package Project2;
 
-public class Cube extends ThreeDimensionalShape{
+public class Cube extends ThreeDimensionalShape {
     private double side;
 
     // Constructor
     public Cube(double side) {
         this.side = side;
-        calculateVolume();
-        calculateSurfaceArea();
     }
 
     // Implementation of abstract methods
     @Override
-    void calculateVolume() {
-        volume = Math.pow(side, 3);
+    public double surfaceArea() {
+        return 6 * side * side;
     }
 
     @Override
-    void calculateSurfaceArea() {
-        surfaceArea = 6 * Math.pow(side, 2);
+    public double volume() {
+        return side * side * side;
+    }
+
+    @Override
+    public String toString(){
+        return String.format("Cube {side=%.2f, surface area=%.2f, volume=%.2f}", side, surfaceArea(), volume());
     }
 }

@@ -1,26 +1,26 @@
 package Project2;
 
 public class Cylinder extends ThreeDimensionalShape{
-    private double height;
     private double radius;
+    private double height;
 
-    // Constructor
-    public Cylinder(double height, double radius) {
-        this.height = height;
+    public Cylinder(double radius, double height) {
         this.radius = radius;
-        calculateVolume();
-        calculateSurfaceArea();
-    }
-
-    // Implementation of abstract methods
-    @Override
-    void calculateVolume() {
-        volume = Math.PI * Math.pow(radius, 2) * height;
+        this.height = height;
     }
 
     @Override
-    void calculateSurfaceArea() {
-        surfaceArea = 2 * Math.PI * radius * (radius + height);
+    public double surfaceArea() {
+        return 2 * Math.PI * radius * (radius + height);
     }
 
+    @Override
+    public double volume() {
+        return Math.PI * radius * radius * height;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Cylinder {height=%.2f, radius=%.2f, surface area=%.2f, volume=%.2f}", height, radius, surfaceArea(), volume());
+    }
 }

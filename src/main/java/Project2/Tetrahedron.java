@@ -1,23 +1,26 @@
 package Project2;
 
 public class Tetrahedron extends ThreeDimensionalShape{
-    private double edge;
-
-    // Constructor
-    public Tetrahedron(double edge) {
-        this.edge = edge;
-        calculateVolume();
-        calculateSurfaceArea();
+    public Tetrahedron(double edgeLength) {
+        this.edgeLength = edgeLength;
     }
-
-    // Implementation of abstract methods
-    @Override
-    void calculateVolume() {
-        volume = Math.pow(edge, 3) / (6 * Math.sqrt(2));
+    public double getEdgeLength() {
+        return edgeLength;
     }
 
     @Override
-    void calculateSurfaceArea() {
-        surfaceArea = Math.sqrt(3) * Math.pow(edge, 2);
+    public double surfaceArea() {
+        return Math.sqrt(3) * edgeLength * edgeLength;
+    }
+
+    @Override
+    public double volume() {
+        return Math.pow(edgeLength, 3) / (6 * Math.sqrt(2));
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Tetrahedron {edge length=%.2f, surface area=%.2f, volume=%.2f}",
+                edgeLength, surfaceArea(), volume());
     }
 }
